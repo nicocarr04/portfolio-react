@@ -1,3 +1,4 @@
-.App { 
-  text-align: center;
+.parent {
+  position: relative;
+  padding-bottom: 10rem;
 }
