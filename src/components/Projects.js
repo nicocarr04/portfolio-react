@@ -19,7 +19,7 @@ function Projects() {
         <div className="work-container">
           <div className="open-source-container">
             <h2>Open Source Projects</h2>
-            <a className="GDG" href="https://github.com/nicocarr04/GDG">
+            <a className="GDG" href="/gdg">
               <img src={githubLogo} alt="Github Logo" className='icon'/>
               <div className="box">
                 <div className="font-title-box">nicocarr04/GDG</div>
@@ -28,12 +28,12 @@ function Projects() {
                 </div>
               </div>
             </a>
-            <a className="Website" href="https://github.com/nicocarr04/portfolio-website">
+            <a className="Website" href="/wski">
               <img src={githubLogo} alt="Github Logo" className='icon'/>
               <div className="box">
-                <div className="font-title-box">nicocarr04/portfolio-website</div>
+                <div className="font-title-box">nicocarr04/website-ski-exemple</div>
                 <div className="paragraph-box">
-                  This is the source code of this present website you are looking at. The design of the website may not be perfect as I am not a graphic designer.
+                  This is the source code of a website that I made. The design of the website may not be perfect as I am not a graphic designer.
                 </div>
               </div>
             </a>
