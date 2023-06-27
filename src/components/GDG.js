@@ -12,6 +12,7 @@ function GDG() {
         </div>
         <div className="description-gdg-container">
           <a className="remove-linkbar" href='https://github.com/nicocarr04/GDG'><h1 className='project-name'>Group Builder</h1></a>
+          <h2 className='project-name'>C#, WinForms</h2>
           <p>
               I have developed a group creator program that as the process of organizing students into groups. This software allows you to effortlessly add or remove students from your class. You can also import existing configurations or save your current setup for future use. 
           </p>
