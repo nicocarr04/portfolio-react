@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/footer.css';
+// Importation d'images importantes
 import linkedinLong from '../imgs/LinkedIn-long.png'
 import githubLong from '../imgs/GitHub-long.png'
 

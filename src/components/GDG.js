@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/gdg.css'
+// Importation d'une image
 import GDGPic from '../imgs/GDGInterface.png'
 
 function GDG() {

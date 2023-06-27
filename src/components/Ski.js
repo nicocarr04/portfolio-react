@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/ski.css';
+// Importation d'une image
 import SkiPic from '../imgs/skiWebsite.png'
 
 function Ski() {

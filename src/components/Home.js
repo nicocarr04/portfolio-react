@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/home.css';
+// Importation d'une image
 import profilePic from '../imgs/profile-pic.jpg'
 
 function Home() {

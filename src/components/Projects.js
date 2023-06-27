@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/projects.css';
+// Importation d'images importantes
 import githubLogo from '../imgs/GitHub.png';
 import ipGolfLogo from '../imgs/IPGolf.png';
 import objectiviaLogo from '../imgs/Objectivia.png';
