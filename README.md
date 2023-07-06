@@ -9,7 +9,7 @@ Fonctionnalités du site web:
 - Page pour me contacter (exemple seulement car pas de backend)
 
 Comment installer?
-Vous devez npm install dans le dossier de base, et dans le dossier backend.
-Puis, lancez les deux avec npm start dans le dossier de base, et dans le dossier backend. 
+- Vous devez npm install dans le dossier de base, et dans le dossier backend.
+- Puis, lancez les deux avec npm start dans le dossier de base, et dans le dossier backend. 
 
 Enjoy!
