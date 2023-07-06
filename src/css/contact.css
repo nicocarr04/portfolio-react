@@ -11,6 +11,14 @@
   .form-group {
     margin-bottom: 20px;
   }
+
+  .is-invalid {
+    border: 2px red solid;
+  }
+  
+  .invalid-feedback {
+    color: red;
+  }
   
   label {
     display: block;

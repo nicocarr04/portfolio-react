@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../css/contact.css';
+import axios from 'axios';
+import '../css/testimonies.css';
 
-function Contact() {
+function Testimonies() {
   // Regex pour les validations
-  const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
   const stringRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+  const numeroRegex = /^[a-zA-Z0-9]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
 
   const navigate = useNavigate()
+    
+  const [testimonies, setTestimonies] = useState([])
 
   const [state, setState] = useState({
+    numero: '',
     name: '',
-    email: '',
     message: ''
   })
 
+
   // Erreur de validation
   const [errors, setErrors] = useState({
+    numero: '',
     name: '',
-    email: '',
     message: '',
   })
 
@@ -36,8 +40,8 @@ function Contact() {
             if (!stringRegex.test(value)) setErrors(prev => ({ ...prev, [field]: `${field} n'est pas valide` }))
             else setErrors(prev => ({ ...prev, [field]: '' }))
             break
-        case 'email':
-            if (!emailRegex.test(value)) setErrors(prev => ({ ...prev, [field]: `${field} n'est pas valide` }))
+        case 'numero':
+            if (!numeroRegex.test(value)) setErrors(prev => ({ ...prev, [field]: `${field} n'est pas valide` }))
             else setErrors(prev => ({ ...prev, [field]: '' }))
             break
         default:
@@ -53,7 +57,7 @@ function Contact() {
 
   // Verifier si toute la forme est valide
   function isFormValid() {
-    if (stringRegex.test(state.name) && stringRegex.test(state.message) && emailRegex.test(state.email)) return true
+    if (stringRegex.test(state.name) && stringRegex.test(state.message) && numeroRegex.test(state.numero)) return true
     else {
         Object.keys(state).forEach(field => {
             if (field !== 'checkbox') validateField(field, state[field])
@@ -66,33 +70,47 @@ function Contact() {
   function submit(event) {
     event.preventDefault()
 
-    isFormValid()
-        .then(res => navigate('/'))
-        .catch(err => {
-              // Mettre a jour l'objet des erreurs avec les erreurs du backend (si cela existait)
-            let errors = {}
-            err.response.data.errors.forEach(error => {
-                errors = { ...errors, ...error }
-            })
-            setErrors(errors)
-            console.log('Erreur ajout etudiant', err.response.data.errors)
+    isFormValid() && axios.post(`http://localhost:5500/temoigneurs/`, state)
+    .then(res => navigate('/'))
+    .catch(err => {
+          // Mettre a jour l'objet des erreurs avec les erreurs du backend (si cela existait)
+        let errors = {}
+        err.response.data.errors.forEach(error => {
+            errors = { ...errors, ...error }
         })
+        setErrors(errors)
+        console.log('Erreur ajout temoignage', err.response.data.errors)
+    })
   }
 
+  function getTestimonyList(){
+    axios.get('http://localhost:5500/temoigneurs')
+    .then(res=>{
+        setTestimonies(res.data.data)
+        console.log('res', res)
+    }).catch(err=>{
+        console.error('err', err)
+    })
+  }  
+
+  useEffect(() => {
+    getTestimonyList()
+  }, [])
+  
   return (
     <div className="wrapper">
-      <div className="contact-container">
-        <h1>Contact Me</h1>
+      <div className="testimonial-container">
+        <h1>Testimonial Form</h1>
         <form onSubmit={submit}>
+          <div className="form-group">
+            <label htmlFor="numero">ID</label>
+            <input onChange={handleChange} className={`${fieldHasError('numero') && "is-invalid"}`} type="text" id="numero" name="numero" />
+            <div className={fieldHasError('numero') ? "invalid-feedback" : ""}>{errors.numero}</div>
+          </div>
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input onChange={handleChange} className={`${fieldHasError('name') && "is-invalid"}`} type="text" id="name" name="name" />
             <div className={fieldHasError('name') ? "invalid-feedback" : ""}>{errors.name}</div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input onChange={handleChange} className={`${fieldHasError('email') && "is-invalid"}`} type="email" id="email" name="email" />
-            <div className={fieldHasError('email') ? "invalid-feedback" : ""}>{errors.email}</div>
           </div>
           <div className="form-group">
             <label htmlFor="message">Message</label>
@@ -101,9 +119,16 @@ function Contact() {
           </div>
           <button type="submit">Send</button>
         </form>
+        <div className='comment-testimonies'>
+        <h1>Comment from the testimonies</h1>
+        {testimonies.map(temoigneur => <div className='temoigneur' key={temoigneur.numero}>
+            <h2>{temoigneur.name}</h2>
+            <p>{temoigneur.message}</p>
+        </div>)}
+        </div>
       </div>
     </div>
   );
 }
 
-export default Contact;
+export default Testimonies;
