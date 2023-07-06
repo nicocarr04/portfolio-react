@@ -10,6 +10,8 @@ Fonctionnalités du site web:
 
 Comment installer?
 - Vous devez npm install dans le dossier de base, et dans le dossier backend.
-- Puis, lancez les deux avec npm start dans le dossier de base, et dans le dossier backend. 
+- Puis, lancez les deux avec npm start dans le dossier de base, et dans le dossier backend.
+
+PS: Il faut que le backend aile le port 5500 de disponible.
 
 Enjoy!
