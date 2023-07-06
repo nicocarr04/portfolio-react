@@ -7,11 +7,12 @@ import { Helmet } from 'react-helmet'; // Importe le composant Helmet de la bibl
 // Importe des composants nécessaire pour bien affiché la page.
 import Home from './components/Home'; 
 import Projects from './components/Projects';
+import Testimonies from './components/Testimonies';
 import Contact from './components/Contact';
 import Header from './components/Header'; 
 import Footer from './components/Footer'; 
 import GDG from './components/GDG'; 
-import Ski from './components/Ski'; 
+import Ski from './components/Ski';
 
 function App() { 
   return (
@@ -22,6 +23,7 @@ function App() {
       <Header/>
       <Routes> {/* Définit les routes de l'application */}
         <Route path='/' element={<Home/>}/> 
+        <Route path='/testimonies' element={<Testimonies/>}/> 
         <Route path='/projects' element={<Projects/>}/> 
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/gdg' element={<GDG/>}/> 

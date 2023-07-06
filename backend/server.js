@@ -2,7 +2,7 @@
 const PORT = 5500
 
 import express from 'express'
-import { temoigneurList, addTemoigneur, updateTemoigneur, deleteTemoigneur, getTemoigneurById } from './controllers/temoignages.js'
+import { temoigneurList, addTemoigneur } from './controllers/temoignages.js'
 
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -25,6 +25,3 @@ app.listen(PORT, () => console.log(`Serveur running on port ${PORT}`))
 
 app.get('/temoigneurs', temoigneurList)
 app.post('/temoigneurs', addTemoigneur)
-app.put('/temoigneurs/:numero', updateTemoigneur)
-app.delete('/temoigneurs/:numero', deleteTemoigneur)
-app.get('/temoigneurs/:numero', getTemoigneurById)
