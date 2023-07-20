@@ -5,8 +5,8 @@ Un site web présenter par Nicolas Carriere pour le cours de La Cité Collégial
 Fonctionnalités du site web:
 - Page d'acceuil.
 - Page liste des projets.
-- Page pour témoigner et listes des témoignages.
-- Page pour me contacter (exemple seulement)
+- Page pour témoigner et listes des témoignages. (exemple seulement)
+- Page pour me contacter. (exemple seulement)
 
 Comment installer?
 - Vous devez npm install dans le dossier de base, et dans le dossier backend.
